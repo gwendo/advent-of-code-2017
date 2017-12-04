@@ -35,7 +35,7 @@ def find_sum_larger_than_input(my_input):
     while mySum <= my_input:
         coord = nextCoord.next()
         mySum = sum_adjecent(coord, coords)
-        print "c: %s, sum: %s" % (coord, mySum)
+        #print "c: %s, sum: %s" % (coord, mySum)
         coords.append((coord, mySum))
     return mySum
 
