@@ -1,18 +1,19 @@
 
+def redistribute_twice(param):
+    step, banks = find_first_duplicate(map(lambda x: int(x), param.split(None)))
+    step, banks = find_first_duplicate(banks)
+    return step
 
-def redistribute(param):
-    banks = map(lambda x: int(x), param.split(None))
+
+def find_first_duplicate(banks):
     seen_configs = []
     step = 0
-    print banks
-    while True:
-        if banks in seen_configs:
-            break
+    while banks not in seen_configs:
         first = banks.index(reduce(lambda x, y: x if x > y else y, banks))
+        seen_configs.append(list(banks))
         banks = spread(first, banks)
-        seen_configs.append(banks)
         step += 1
-    return step    
+    return step, banks
 
 def spread(first, banks):
     count = banks[first]
